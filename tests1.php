@@ -13,12 +13,11 @@ hr {
   border-width: 1px;
 } 
 
-#regForm{
+.container{
   border: 2px solid black;
-  padding: 25px;
-  background-color: #a7b2b8;
-  background-repeat: no-repeat;
-  width: 300px;
+  background-color: #f2f2f2;
+  height: 190px;
+  width: 30%;
 }
 
 button{
@@ -26,6 +25,7 @@ button{
   background-color: #a7b2b8;
   padding: 8px 24px;
 }
+
 #head {
   font-size: 19px;
 }
@@ -56,33 +56,52 @@ button{
 
 <p>Type Switcher: </p>
 
-    <form>
-              <select name="selectSize"  id="selectSize" onchange="myFunction(this.options[this.selectedIndex].value)">
-                  <option name='' disabled selected style='display:none;'>Type Switcher</option>
-                  <option id="size1" name="Size">Size</option>
-                  <option id="size2" name="Height, Width, Lenght">Height, Width, Lenght</option>
-                  <option id="size3" name="Weight">Weight</option>
-                </select>
-                <div id="newSize"></div> 
-                <div id="newHeight"></div> 
-                <div id="newWidth"></div> 
-                <div id="newWeight"></div> 
-    </form>
+<select id="mySelect" onChange="check(this);">
+    <option>Type Switcher</option>
+    <option>Size</option>
+    <option>Height, Width, Lenght</option>
+    <option>Weight</option>
+</select>
+<pre> </pre>
+
+<div class="container">
+    <p>Please enter your data here:</p>
+    <pre> </pre>
+    <div id="other-size" style="display:none;">
+        <label> Size <input id="other-size"></label>
+    </div>
+    <div id="other-height" style="display:none;">
+        <label> Height <input id="other-height"></label>
+    </div>
+    <div id="other-width" style="display:none;">
+        <label> Width <input id="other-width"></label>
+    </div>
+    <div id="other-lenght" style="display:none;">
+        <label> Lenght <input id="other-lenght"></label>
+    </div>
+    <div id="other-weight" style="display:none;">
+        <label> Weight <input id="other-weight"></label>
+    </div>
+
+</div>
 
 <script>
 
-      function myFunction(name){
-        if(name == 'Size'){
-        document.getElementById('newSize').innerHTML='Size: <input type="text" name="newSize"/>';
-        } elseif(x == 'Height, Width, Lenght'){
-        document.getElementById('newSize').innerHTML='Height: <input type="text" name="newHeight"/>';
-        document.getElementById('newWidth').innerHTML='Width: <input type="text" name="newWidth"/>';
-        }elseif(x=='Weight'){
-        document.getElementById('newWeight').innerHTML='Weight: <input type="text" name="newWeight"/>';
-        }else{
-        document.getElementById('newSize').innerHTML='';
-        }
-      }
+    function check(elem) {
+    // use one of possible conditions
+    // if (elem.value == 'Other')
+    if (elem.value == 'Size') {
+        document.getElementById("other-size").style.display = 'block';
+    }else if (elem.value == 'Height, Width, Lenght') {
+        document.getElementById("other-height").style.display = 'block';
+        document.getElementById("other-width").style.display = 'block';
+        document.getElementById("other-lenght").style.display = 'block';
+    }else if (elem.value == 'Weight') {
+        document.getElementById("other-weight").style.display = 'block';
+    }else{
+        document.getElementById("other-size").style.display = 'none';
+    }
+}
 
 </script>
 
